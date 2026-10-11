@@ -1,0 +1,19 @@
+Metadata-Version: 2.4
+Name: agentflight
+Version: 0.1.0
+Summary: An auditing tool to prevent AI coding agents from tampering with or deleting tests.
+Author: Astel Antony
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.8
+Description-Content-Type: text/markdown
+
+# AgentFlight CLI
+
+AgentFlight CLI is a lightweight auditing tool designed to monitor autonomous AI coding agents. It ensures that AI assistants do not artificially pass CI/CD pipelines by deleting or commenting out failing assertions.
+
+## Installation
+
+```bash
+pip install agentflight
