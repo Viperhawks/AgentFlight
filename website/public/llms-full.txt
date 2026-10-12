@@ -1,0 +1,51 @@
+# AgentFlight CLI — Full Reference (llms-full.txt)
+
+> An open-source Python CLI auditor designed to prevent autonomous AI coding agents from deleting, commenting out, or weakening test assertions to artificially pass CI/CD pipelines.
+
+## Metadata
+- **Package Name**: `agentflight-cli`
+- **CLI Binary**: `agentflight`
+- **Version**: `1.0.1`
+- **Language**: Python (>= 3.8)
+- **Dependencies**: `pytest`
+- **Author**: Astel Antony (Viperhawks)
+- **License**: MIT
+- **Website**: https://agentflight-cli.vercel.app/
+- **Repository**: https://github.com/Viperhawks/AgentFlight
+- **PyPI**: https://pypi.org/project/agentflight-cli/
+
+## Problem Statement
+When autonomous AI coding agents (e.g., SWE agents, CI auto-fix bots, coding assistants) encounter a failing test, they sometimes "reward-hack" the test suite by deleting `assert` statements or removing `with pytest.raises(...)` checks instead of fixing the underlying bug. Standard test runners report a green build (exit code `0`) when assertions are removed.
+
+**AgentFlight CLI** wraps the test or agent execution command, audits the Python Abstract Syntax Tree (AST) of every test file before and after execution, and fails the pipeline with exit code `2` if any assertion was removed.
+
+## Installation & Usage
+
+```bash
+# Install from PyPI
+pip install agentflight-cli
+
+# Run default pytest audit (executes `python -m pytest`)
+agentflight
+
+# Wrap a specific test or agent command
+agentflight pytest
+agentflight python -m pytest -q
+```
+
+## How It Works (`TestIntegrityAuditor`)
+1. **Discovery (`discover_test_files`)**: Scans the repository recursively for `**/test_*.py` and `**/*_test.py`, excluding hidden directories, `venv`, and `site-packages`.
+2. **Pre-Execution Snapshot**:
+   - Reads all discovered test files.
+   - Extracts all AST `ast.Assert` nodes and `ast.With` context managers matching `raises` via `ast.unparse`.
+   - Captures the current git working tree state using `git write-tree`.
+3. **Command Execution**: Runs the target command (`subprocess.run`) and streams `STDOUT`, `STDERR`, and the command's exit code.
+4. **Post-Execution Audit (`audit_step`)**:
+   - Re-parses the AST of every test file and computes `deleted_assertions = old_asserts - new_asserts`.
+   - Marks each file as `CLEAN` or `FLAGGED_SUSPICIOUS`.
+   - If tampering is detected in any file, outputs `[ALERT] Critical assertions removed during execution!` and returns exit code `2`.
+
+## Exit Codes
+- `0`: Command succeeded and no test assertions were deleted (`CLEAN`).
+- `2`: Test tampering detected (`FLAGGED_SUSPICIOUS`) — assertions were removed during execution.
+- `<command exit code>`: If no tampering occurred, returns the wrapped command's native exit code.

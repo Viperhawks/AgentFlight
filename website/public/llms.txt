@@ -1,0 +1,42 @@
+# AgentFlight CLI
+
+> AgentFlight CLI (`agentflight-cli`) is an open-source Python AST auditing tool that monitors autonomous AI coding agents and prevents them from deleting or tampering with test assertions to artificially pass CI/CD pipelines.
+
+- Website: https://agentflight-cli.vercel.app/
+- PyPI Package: https://pypi.org/project/agentflight-cli/
+- GitHub Repository: https://github.com/Viperhawks/AgentFlight
+- Latest Version: 1.0.1
+- Author: Astel Antony (Viperhawks)
+- License: MIT
+
+## Quick Start
+
+Install via pip:
+
+```bash
+pip install agentflight-cli
+```
+
+Run your test suite or wrap an AI agent command:
+
+```bash
+agentflight pytest
+```
+
+Or run with default pytest execution:
+
+```bash
+agentflight
+```
+
+## Core Capabilities
+
+- **Test Auto-Discovery**: Automatically finds `**/test_*.py` and `**/*_test.py` files across the workspace while ignoring virtual environments (`venv`, `.venv`, `site-packages`) and hidden folders.
+- **Python AST Assertion Baseline (`TestIntegrityAuditor`)**: Parses Python Abstract Syntax Trees (`ast.parse`) before and after command execution to extract `assert` statements (`ast.Assert`) and `with pytest.raises(...)` blocks (`ast.With`).
+- **Git Tree State Tracking**: Captures `git write-tree` state hashes before and after running the agent or test command.
+- **CI/CD Tamper Blocking**: Compares pre- and post-execution assertion sets (`old_asserts - new_asserts`). If any assertion is deleted, flags the file as `FLAGGED_SUSPICIOUS`, prints deleted assertions, and exits with status code `2` to block CI/CD pipelines.
+
+## Documentation & Reference
+
+- [Full LLM Documentation](https://agentflight-cli.vercel.app/llms-full.txt): Detailed architecture, CLI reference, exit codes, and example output.
+- [GitHub README](https://github.com/Viperhawks/AgentFlight#readme): Source code and documentation.

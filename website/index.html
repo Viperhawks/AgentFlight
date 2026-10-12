@@ -6,28 +6,111 @@
     <title>AgentFlight CLI — Stop AI Agents From Deleting Your Tests</title>
     <meta
       name="description"
-      content="An open-source Python AST auditing CLI that prevents autonomous AI coding agents from deleting or tampering with test assertions in CI/CD pipelines."
+      content="AgentFlight CLI (agentflight-cli) is an open-source Python AST auditing tool that prevents autonomous AI coding agents from deleting or tampering with pytest assertions in CI/CD pipelines."
+    />
+    <meta
+      name="keywords"
+      content="AgentFlight, agentflight-cli, AI coding agents, pytest integrity auditor, Python AST test audit, prevent AI test tampering, CI/CD test security, autonomous agent guardrails"
     />
     <meta name="author" content="Astel Antony (Viperhawks)" />
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+    <meta name="googlebot" content="index, follow" />
 
+    <link rel="canonical" href="https://agentflight-cli.vercel.app/" />
+    <link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml" />
+    <link rel="alternate" type="text/plain" title="LLMs.txt (GEO)" href="/llms.txt" />
+    <link rel="alternate" type="text/plain" title="LLMs Full Reference (GEO)" href="/llms-full.txt" />
+
+    <!-- Open Graph -->
     <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="AgentFlight CLI" />
+    <meta property="og:url" content="https://agentflight-cli.vercel.app/" />
     <meta property="og:title" content="AgentFlight CLI — Stop AI Agents From Deleting Your Tests" />
     <meta
       property="og:description"
-      content="Open-source CLI auditor that stops AI coding agents from tampering with test assertions in CI/CD."
+      content="Open-source Python AST CLI auditor that stops AI coding agents from tampering with or deleting test assertions in CI/CD."
     />
-    <meta property="og:image" content="/logo.png" />
+    <meta property="og:image" content="https://agentflight-cli.vercel.app/logo.png" />
 
+    <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content="https://agentflight-cli.vercel.app/" />
     <meta name="twitter:title" content="AgentFlight CLI — Stop AI Agents From Deleting Your Tests" />
     <meta
       name="twitter:description"
-      content="Open-source CLI auditor that stops AI coding agents from tampering with test assertions in CI/CD."
+      content="Open-source Python AST CLI auditor that stops AI coding agents from tampering with or deleting test assertions in CI/CD."
     />
-    <meta name="twitter:image" content="/logo.png" />
+    <meta name="twitter:image" content="https://agentflight-cli.vercel.app/logo.png" />
 
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="apple-touch-icon" href="/logo.png" />
+
+    <!-- GEO & SEO Structured Data (JSON-LD) -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "SoftwareApplication",
+            "name": "AgentFlight CLI",
+            "alternateName": "agentflight-cli",
+            "url": "https://agentflight-cli.vercel.app/",
+            "downloadUrl": "https://pypi.org/project/agentflight-cli/",
+            "codeRepository": "https://github.com/Viperhawks/AgentFlight",
+            "softwareVersion": "1.0.1",
+            "applicationCategory": "DeveloperApplication",
+            "operatingSystem": "Windows, macOS, Linux",
+            "programmingLanguage": "Python",
+            "license": "https://opensource.org/licenses/MIT",
+            "description": "An open-source Python AST auditing CLI tool that monitors autonomous AI coding agents and prevents them from deleting or tampering with test assertions to artificially pass CI/CD pipelines.",
+            "author": {
+              "@type": "Person",
+              "name": "Astel Antony",
+              "url": "https://github.com/Viperhawks"
+            },
+            "offers": {
+              "@type": "Offer",
+              "price": "0",
+              "priceCurrency": "USD"
+            }
+          },
+          {
+            "@type": "WebSite",
+            "name": "AgentFlight CLI",
+            "url": "https://agentflight-cli.vercel.app/"
+          },
+          {
+            "@type": "FAQPage",
+            "mainEntity": [
+              {
+                "@type": "Question",
+                "name": "What is AgentFlight CLI?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "AgentFlight CLI (agentflight-cli) is an open-source Python AST auditing tool that monitors autonomous AI coding agents to ensure they do not artificially pass CI/CD pipelines by deleting or commenting out failing test assertions."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "How do I install and run AgentFlight CLI?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Install via pip with `pip install agentflight-cli`, then run `agentflight pytest` (or simply `agentflight`) to execute your tests with AST assertion integrity auditing."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "How does AgentFlight detect test tampering?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "AgentFlight's TestIntegrityAuditor parses Python Abstract Syntax Trees (ast.Assert and pytest.raises context managers) across all test_*.py and *_test.py files before and after command execution, snapshots git write-tree hashes, and fails with exit code 2 if any assertions were removed."
+                }
+              }
+            ]
+          }
+        ]
+      }
+    </script>
   </head>
 
   <body>
