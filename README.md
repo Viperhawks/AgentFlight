@@ -5,4 +5,4 @@ AgentFlight CLI is a lightweight auditing tool designed to monitor autonomous AI
 ## Installation
 
 ```bash
-pip install agentflight
+pip install agentflight-cli
