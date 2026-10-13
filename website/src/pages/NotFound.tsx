@@ -11,7 +11,9 @@ const NotFound = () => {
 
   return (
     <div className="af flex min-h-screen flex-col items-center justify-center bg-[hsl(var(--af-bg))] px-5 text-center font-af-body text-[hsl(var(--af-fg))]">
-      <AgentFlightLogo variant="badge" size={96} className="mb-6" />
+      <div className="mb-6">
+        <AgentFlightLogo className="scale-125" />
+      </div>
       <h1 className="mb-2 font-mono text-4xl font-bold tracking-wider">404</h1>
       <p className="mb-6 font-mono text-sm text-[hsl(var(--af-muted))]">Route not found in AgentFlight CLI.</p>
       <Link

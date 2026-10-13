@@ -309,7 +309,7 @@ export default function AgentFlight() {
       <header className="fixed inset-x-0 top-0 z-50 border-b border-[hsl(var(--af-fg)/0.1)] bg-[hsl(var(--af-bg)/0.6)] backdrop-blur-md">
         <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-5">
           <a href="#top" className="flex items-center gap-3 transition-opacity hover:opacity-90">
-            <AgentFlightLogo variant="lockup" size={34} />
+            <AgentFlightLogo />
           </a>
           <div className="flex items-center gap-2">
             <Button
@@ -364,23 +364,12 @@ export default function AgentFlight() {
         ))}
         <div className="relative z-10 mx-auto max-w-4xl text-center">
           <motion.div
-            initial={{ opacity: 0, scale: 0.9, y: 16 }}
-            animate={{ opacity: 1, scale: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="mb-6 flex justify-center"
-          >
-            <Tilt max={15}>
-              <AgentFlightLogo variant="badge" size={116} />
-            </Tilt>
-          </motion.div>
-
-          <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.05 }}
+            transition={{ duration: 0.6 }}
             className="af-glass mx-auto mb-8 inline-flex items-center gap-2 rounded-full px-4 py-1.5 font-mono text-xs uppercase tracking-widest text-[hsl(var(--af-muted))]"
           >
-            <Terminal className="h-3.5 w-3.5" /> v{AGENTFLIGHT_VERSION} · Open-source · Python AST Auditor
+            <span className="font-bold text-[hsl(var(--af-fg))]">&gt;_</span> OPEN-SOURCE · MIT
           </motion.div>
 
           <motion.h1
@@ -513,7 +502,7 @@ export default function AgentFlight() {
       <footer className="border-t border-[hsl(var(--af-fg)/0.1)] px-5 py-10">
         <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-4 font-mono text-xs text-[hsl(var(--af-muted))] sm:flex-row">
           <a href="#top" className="flex items-center gap-2.5">
-            <AgentFlightLogo variant="lockup" size={28} />
+            <AgentFlightLogo />
           </a>
           <span>© {new Date().getFullYear()} · MIT License · By Astel Antony (Viperhawks)</span>
           <div className="flex items-center gap-4">
